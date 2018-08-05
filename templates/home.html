@@ -1,0 +1,192 @@
+{% if username %}
+
+<!DOCTYPE html>
+{% extends "pure/layout.html" %}
+
+
+<html>
+<head>
+	<meta http-equiv="refresh" content="5">
+	{% block title %}
+	{% if username %}
+	Home
+	{% else %}
+	Login
+	{% endif %}
+	{% endblock %}
+	{% block script %}
+	
+	{% endblock %}
+</head>
+
+{% block body %}
+<body>
+
+
+	<style>	
+	body
+	{
+		background-image: url('/image/Wood.jpg');
+		width: 100%;
+		position: fixed;
+	}
+	.pure-menu-list
+	{
+		width: 100%;
+		background-color: teal;
+		box-shadow: 10px 1px 10px;
+	}
+	.pure-menu-heading a
+	{
+		font-size: 15px;
+		color: white;
+		text-decoration : none;
+	}
+
+	.pure-menu-heading a:hover
+	{
+		background-color: white;
+		color:black;
+		border-radius: 5px;
+	}
+
+	.pure-menu-item a
+	{
+		font-size: 15px;
+		color: white;
+		text-decoration: none;
+		background-color: black;
+	}
+
+	.pure-menu-item a:hover
+	{
+		background-color: white;
+		color:black;
+		border-radius: 5px;
+	}
+	.pure-table
+	{
+		background-color:white;
+		border:none;
+		width:40%;
+		border-radius: 20px;
+		background-image: url('/image/ind.jpeg');
+		height: 100%;
+		background-position: center;
+		background-size: cover;
+
+	}
+	input[type="text"]
+	{
+		height:70px;
+		color:black;
+	}
+	input[type="password"]
+	{
+		height:70px;
+		color:black;
+	}
+	input[type="submit"]
+	{
+		height:50px;
+		color:white;
+		
+	}
+	.pure-text
+	{
+		letter-spacing: 10px;
+		font-weight:100 ;
+		color: white;
+	}
+	.pure-image
+	{
+		width:60px;
+		border-radius: 40px;
+		margin-left: 5px;
+	}
+	.pure-button
+	{
+		background-color: red;
+		float:;
+		width: 150px;
+		border:solid 3px white;
+	}
+	.pure-button-primary
+	{
+		background-color: lightblue;
+		border:solid 3px white;
+	}
+	.pure
+	{
+		background-color: black;
+		width: 100%;
+	}
+	.alert
+	{
+		text-decoration: none;
+		color:white;
+		letter-spacing: 10px;
+		font-weight: 100;
+	}
+	.pure-button-warning
+	{
+		background-color: green;
+		border:solid 3px white;
+	}
+	.p
+	{
+		color:white;
+		letter-spacing: 10px;
+		font-weight: 100;
+	}
+	</style>
+<div class="pure-menu pure-menu-horizontal">
+	<ul class="pure-menu-list">
+		<li class="pure-menu-item"><img src="/image/aman.png" class="pure-image"></li>
+		<li class="pure-menu-heading"><a href="{{url_for('home')}}" class="pure-menu-link">NOTO</a></li>
+        <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+            <a href="#" id="menuLink1" class="pure-menu-link">{{username}}</a>
+            <ul class="pure-menu-children">
+            	<li class="pure-menu-item"><a href="{{url_for('notes')}}" class="pure-menu-link">Text Area</a></li>
+                <li class="pure-menu-item"><a href="{{url_for('logout')}}" class="pure-menu-link">Logout</a></li>
+            </ul>
+        </li>
+	</ul>
+</div>
+<br>
+<div>
+	<p class="p">Another Link is Available in Menu User Dropdown</p>
+	</div>
+<a href="{{url_for('notes')}}"><input type="button" value="TextArea" class="pure-button"></a>
+<br>
+<div id="alert" align="center">
+
+    <h4 class="pure" align="left"> 
+
+    	{% for i in row %}
+		<a href="{{ url_for('data',id=i['id'])}}" class="pure-menu-link"><br><br>{{i["title"]}} <br><br><a href="{{ url_for('ch',id=i['id'])}}"> <input type="submit" value="title update" class="pure-button pure-button-warning"></a> <br><br><a href="{{url_for('Delete',id=i['id'])}}">
+		<input type="submit" value="Delete" class="pure-button" align="right">
+		<a href="{{url_for('update',id=i['id'] )}}"><input type="submit" value=" Update Notes " class="pure-button pure-button-primary">
+		</a>
+		</a>
+		{% endfor %} 
+
+    	<a class="alert" href=""></a>
+
+    </h4>
+
+	</div>
+
+
+<br><br><br>
+</body>
+{% endblock %}
+</html>
+
+{% else %}
+
+	{% include('login.html') %}
+
+{% endif %}
+
+

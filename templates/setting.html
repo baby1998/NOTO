@@ -1,0 +1,21 @@
+<table class="pure-table" align="center" border="">
+	<tr>
+		<td align="center">
+			<br>
+			<h2 class="pure-text">NOTO Login</h2>
+			<br><br>
+
+			{% for i in row %}
+			<form class="pure-form pure-form-stacked" action="{{url_for('done',id = i['id'])}}" method="POST">
+				{% endfor %} 
+
+				{{form5.csrf_token()}}
+				{{form5.password(placeholder="original")}}<br>
+				{{form5.password2(placeholder="change")}}<br>
+				<input type="submit" name="submit" value="Login" class="pure-button pure-button-primary">
+			</form>
+			<br><br>
+			<a href="{{url_for('sign')}}" class="pure-menu-link">Create Account In NOTO</a>
+		</td>
+	</tr>
+</table>

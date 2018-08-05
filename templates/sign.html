@@ -1,0 +1,169 @@
+{% if username %}
+
+{% include('home.html') %}
+
+{% else %}
+
+{% extends "pure/layout.html" %}
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta http-equiv="refresh" content="30">
+	{% block title %}Sign{% endblock %}
+	
+</head>
+
+{% block body %}
+<body>
+
+	<style>	
+	body
+	{
+		background-image: url('/image/sign.jpg');
+		height: 100%;
+		background-position: center;
+		background-size: cover;
+	}
+	.pure-menu-list
+	{
+		width: 100%;
+		background-color: teal;
+		box-shadow: 10px 1px 10px;
+	}
+	.pure-menu-heading a
+	{
+		font-size: 15px;
+		color: white;
+		text-decoration : none;
+	}
+
+	.pure-menu-heading a:hover
+	{
+		background-color: white;
+		color:black;
+		border-radius: 5px;
+	}
+
+	.pure-menu-item a
+	{
+		font-size: 15px;
+		color: white;
+		text-decoration: none;
+	}
+
+	.pure-menu-item a:hover
+	{
+		background-color: white;
+		color:black;
+		border-radius: 5px;
+	}
+
+	.pure-table
+	{
+		background-color:white;
+		border:none;
+		width:40%;
+		background-image: url();
+		border-radius: 20px;
+	}
+	input[type="text"]
+	{
+		height:50px;
+		color:black;
+	}
+	input[type="email"]
+	{
+		height:50px;
+		color:black;
+	}
+
+	input[type="password"]
+	{
+		height:50px;
+		color:black;
+	}
+
+	input[type="submit"]
+	{
+		height:50px;
+		color:white;
+		background-color: plum;
+	}
+
+	.pure-text
+	{
+		letter-spacing: 10px;
+		font-weight: 100;
+		color: black;
+		font
+	}
+	.pure
+		{
+			background-color:#ff4457;
+			width:80%;
+			height:30px;
+			color:white;
+			letter-spacing: 5px;
+			font-size: 16px;
+			padding-top: 10px;
+			border-radius: 4px;
+			letter-spacing: 3px;
+			font-weight: 100;
+		}
+		.alert
+		{
+			float: right;
+			color:white;
+			text-decoration: none;
+			padding-right: 10px;
+		}
+		.pure-image
+	{
+		width:60px;
+		border-radius: 40px;
+		margin-left: 5px;
+	}
+
+	</style>
+<div class="pure-menu pure-menu-horizontal">
+	<ul class="pure-menu-list">
+		<li class="pure-menu-item"><img src="/image/aman.png" class="pure-image"></li>
+		<li class="pure-menu-heading"><a href="home" class="pure-menu-link">noto</a></li>
+		<li class="pure-menu-item"><a href="{{url_for('login')}}" class="pure-menu-link">Login</a></li>
+	</ul>
+</div>
+<br><br>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+    <div id="alert" align="center">
+    <h4 class="pure" align="left"> {{message}} <a class="alert" href="">X</a></h4>
+	</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<table class="pure-table" align="center" border="">
+	<tr>
+		<td align="center">
+			<br>
+			<h2 class="pure-text"> Create Account</h2>
+			<br><br>
+
+			<form class="pure-form pure-form-stacked"  action="{{url_for('permision')}}" method="POST" onsubmit="return checkpass(this);">
+				{{form.csrf_token()}}
+				{{form.username(placeholder="Username")}}<br>
+				{{form.email(placeholder="Email")}}<br>
+				{{form.password(placeholder="Password")}}<br>
+				<input type="submit" name="submit" value="Create Account !" class="pure-button pure-button-success">
+			</form>
+			<br><br>
+			<a href="{{url_for('login')}}" class="pure-menu-link"> Login ! </a>
+		</td>
+	</tr>
+</table>
+</body>
+{% endblock %}
+</html>
+{% endif %}

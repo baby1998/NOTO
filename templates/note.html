@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+{% extends "pure/layout.html" %}
+
+
+<html>
+<head>
+	<meta http-equiv="refresh" content="5">
+	
+</script>
+
+</head>
+
+{% block body %}
+<body>
+
+
+	<style>	
+	body
+	{
+		background-image: url('/image/ch.jpg');
+		width: 100%;
+		-webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+		
+		
+	}
+	.pure-menu-list
+	{
+		width: 100%;
+		background-color: teal;
+		box-shadow: 10px 1px 10px;
+	}
+	.pure-menu-heading a
+	{
+		font-size: 15px;
+		color: white;
+		text-decoration : none;
+	}
+
+	.pure-menu-heading a:hover
+	{
+		background-color: white;
+		color:black;
+		border-radius: 5px;
+	}
+
+	.pure-menu-item a
+	{
+		font-size: 15px;
+		color: white;
+		text-decoration: none;
+		background-color: black;
+	}
+
+	.pure-menu-item a:hover
+	{
+		background-color: white;
+		color:black;
+		border-radius: 5px;
+	}
+	.pure-table
+	{
+		background-color:orange;
+		border:none;
+		width:90%;
+		border-radius: 5px;
+		height: 100%;
+		background-position: center;
+		background-size: cover;
+
+	}
+	input[type="text"]
+	{
+		height:70px;
+		width: 100%;
+		color:black;
+	}
+	
+	input[type="submit"]
+	{
+		height:50px;
+		color:white;
+		
+	}
+	textarea
+	{
+		width:100%;
+		height: 400px;
+	}
+	.pure-text
+	{
+		letter-spacing: 10px;
+		font-weight:100 ;
+		color: white;
+	}
+	.pure-image
+	{
+		width:60px;
+		border-radius: 40px;
+		margin-left: 5px;
+	}
+	.h3
+	{
+		letter-spacing: 10px;
+		font-weight: 100
+	}
+	.pure-image-logo
+	{
+		border-radius: 200px;
+		width:200px;
+		box-shadow: 1px 1px 30px black;
+
+	}
+	</style>
+<div class="pure-menu pure-menu-horizontal">
+	<ul class="pure-menu-list">
+		<li class="pure-menu-item"><img src="/image/aman.png" class="pure-image"></li>
+		<li class="pure-menu-heading"><a href="{{url_for('home')}}" class="pure-menu-link">NOTO</a></li>
+        <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+            <a href="#" id="menuLink1" class="pure-menu-link">{{username}}</a>
+            <ul class="pure-menu-children">
+            	<li class="pure-menu-item"><a href="" class="pure-menu-link">Text Area</a></li>
+                <li class="pure-menu-item"><a href="logout" class="pure-menu-link">Logout</a></li>
+            </ul>
+        </li>
+	</ul>
+</div>
+<br>
+
+
+<table class="pure-table" align="center" border="">
+	<tr>
+		<td align="center">
+			<h3 class="h3">Create NOTO Notes</h3>
+			<img src="/image/aman.png" class="pure-image-logo">
+			<br><br>
+			<form class="pure-form pure-form-stacked" action="{{url_for('confirm')}}" method="POST">
+				{{form3.csrf_token()}}
+				{{form3.title(placeholder="Title")}}<br><br><br>
+				{{form3.note(placeholder="Notes")}}<br><br><br>
+				<input type="submit" name="submit" value="Create Post" class="pure-button pure-button-primary">
+
+			</form>
+		</td>
+	</tr>
+</table>
+</body>
+{% endblock %}
+</html>
+
+

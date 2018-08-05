@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+{% extends "pure/layout.html" %}
+<html>
+<head>
+	{% block title %}Login{% endblock %}
+</head>
+
+{% block body %}
+<body>
+
+	<style>	
+
+	body
+	{
+		background-color: black;
+	}
+	.pure-menu-list
+	{
+		width: 100%;
+		background-color: teal;
+		box-shadow: 10px 1px 10px;
+	}
+	.pure-menu-heading a
+	{
+		font-size: 15px;
+		color: white;
+		text-decoration : none;
+	}
+
+	.pure-menu-heading a:hover
+	{
+		background-color: white;
+		color:black;
+		border-radius: 5px;
+	}
+
+	.pure-menu-item a
+	{
+		font-size: 15px;
+		color: white;
+		text-decoration: none;
+	}
+
+	.pure-menu-item a:hover
+	{
+		background-color: white;
+		color:black;
+		border-radius: 5px;
+	}
+	.pure-table
+	{
+		background-color:white;
+		border:none;
+		width:30%;
+		
+	}
+	input[type="text"]
+	{
+		height:70px;
+		color:black;
+	}
+	input[type="password"]
+	{
+		height:70px;
+		color:black;
+	}
+	input[type="submit"]
+	{
+		height:50px;
+		color:white;
+		
+	}
+	.pure-text
+	{
+		letter-spacing: 10px;
+		font-weight:100 ;
+		color: white;
+	}
+
+	.pure-image
+	{
+		border-radius: 200px;
+		width:200px;
+		box-shadow: 1px 1px 30px white;
+	}
+
+	.pure-text
+	{
+		letter-spacing: 20px;
+		color:black;
+	}
+	.pure-p
+	{
+		letter-spacing: 10px;
+		font-size: 20px;
+		font-weight: 100;
+	}
+	.p
+	{
+		font-weight: 100
+	}
+	</style>
+
+<div align="center">
+<img src="/image/aman.png" class="pure-image">
+</div>
+<br>
+
+	<div align="center">
+		<table class="pure-table">
+			<tr>
+				<td>
+					
+					<div align="center">
+						<h3 class="pure-p">Welcome In NOTO Application</h3>
+					</div>
+					<br>
+					<div>
+						<p class="p">Hello Hackers</p>
+						<p class="p">This Application is very hot, becouse you can make you screte notes and they all are save from outside world. This Application is build on Big stuff language and framework.    </p>
+						<p class="p">Thank you To come in Our NOTO World .</p>
+						<p class="p">Click To Apply button for go Login Page</p>
+					</div>
+					<div align="right">
+				<a href="{{url_for('login')}}"><input type="button" value="Apply" class="pure-button pure-button-primary"></a>
+					</div>
+				</td>
+			</tr>
+		</table>
+
+	</div>
+</body>
+{% endblock %}
+
+</html>
